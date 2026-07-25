@@ -413,7 +413,7 @@ class Lioness(Panda):
         else:
             if self.computing == "gpu" and i == 0:
                 self.total_lioness_network = np.fromstring(
-                    np.transpose(lioness_network).tostring(), dtype=lioness_network.dtype
+                    np.transpose(lioness_network).tobytes(), dtype=lioness_network.dtype
                 )[:,np.newaxis]
                 
             elif self.computing == "gpu" and i != 0:
@@ -421,7 +421,7 @@ class Lioness(Panda):
                     (
                         self.total_lioness_network,
                         np.fromstring(
-                            np.transpose(lioness_network).tostring(),
+                            np.transpose(lioness_network).tobytes(),
                             dtype=lioness_network.dtype,
                         ),
                     )
@@ -467,9 +467,9 @@ class Lioness(Panda):
         
         # TODO: why this? Should we remove it?
         # if i == 0:
-        # self.total_lioness_network = np.fromstring(np.transpose(lioness_network).tostring(),dtype=lioness_network.dtype)
+        # self.total_lioness_network = np.fromstring(np.transpose(lioness_network).tobytes(),dtype=lioness_network.dtype)
         # else:
-        #    self.total_lioness_network=np.column_stack((self.total_lioness_network ,np.fromstring(np.transpose(lioness_network).tostring(),dtype=lioness_network.dtype)))
+        #    self.total_lioness_network=np.column_stack((self.total_lioness_network ,np.fromstring(np.transpose(lioness_network).tobytes(),dtype=lioness_network.dtype)))
         if self.ignore_final:
             return(np.array([0]))
         else:
