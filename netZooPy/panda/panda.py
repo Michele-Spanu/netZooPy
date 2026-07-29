@@ -690,7 +690,7 @@ class Panda(object):
         subset_panda_results = subset_panda_results.rename(
             columns={"index": "tf_index"}
         )
-        subset_panda_results = subset_panda_results.drop(["name"], 1)
+        subset_panda_results = subset_panda_results.drop(["name"], axis = 1)
         subset_panda_results = subset_panda_results.merge(
             unique_genes, how="inner", left_on="gene", right_on="name"
         )
